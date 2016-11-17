@@ -27,6 +27,8 @@ import javax.crypto.KeyGenerator;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKey;
 
+//From : http://www.techotopia.com/index.php/An_Android_Fingerprint_Authentication_Tutorial(03.11.16)
+
 public class MainActivity extends AppCompatActivity {
 
     private static final String KEY_NAME = "exemple_key";

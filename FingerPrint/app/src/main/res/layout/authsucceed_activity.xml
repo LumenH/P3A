@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/authsucceed_activity">
+
+    <TableLayout
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="1"
+        android:layout_margin="10dp"
+        >
+        <TableRow>
+            <TextView
+                android:text="Site"
+                android:textSize="17dp"
+                />
+            <TextView
+                android:text="Mot de passe"
+                android:textSize="17dp"
+                android:gravity="right"
+                />
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:text="Google"
+                android:textSize="17dp"
+                />
+            <TextView
+                android:text="1234"
+                android:textSize="17dp"
+                android:gravity="right"
+                />
+        </TableRow>
+    </TableLayout>
+
+</LinearLayout>
