@@ -47,7 +47,7 @@ public class FingerPrintHandlerSec extends FingerprintManager.AuthenticationCall
         Toast.makeText(appContext,"Authentication succeeded ",Toast.LENGTH_LONG).show();
         //Ouvrir une nouvelle page avec une application à faire dans la main activity plutôt qu'ici
         Log.d("App","Open App");
-        //Est lancé après deux authentifications (en théorie)
+        //Est lancé après deux authentifications
         Intent intent = new Intent();
         intent.setClass(appContext,AuthSucceedActivity.class);
         appContext.startActivity(intent);

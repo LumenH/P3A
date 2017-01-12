@@ -19,12 +19,10 @@ public class FingerPrintHandler extends FingerprintManager.AuthenticationCallbac
 
     private CancellationSignal cancellationSignal;
     private Context appContext;
-    //private int sucess;
 
 
     public FingerPrintHandler(Context context){
         appContext = context;
-       // sucess = 0;
     }
 
     //démarre l'authentification
@@ -49,19 +47,8 @@ public class FingerPrintHandler extends FingerprintManager.AuthenticationCallbac
     public void onAuthenticationSucceeded(FingerprintManager.AuthenticationResult result ){
         Toast.makeText(appContext,"Authentication succeeded ",Toast.LENGTH_LONG).show();
         //Ouvrir une nouvelle page avec une application à faire dans la main activity plutôt qu'ici
-        /*if(sucess == 1){
-            Log.d("App","Open App");
-            //Est lancé après deux authentifications (en théorie)
-            Intent intent = new Intent();
-            intent.setClass(appContext,AuthSucceedActivity.class);
-            appContext.startActivity(intent);
-       }
-        else{*/
-            //Lance la deuxième authentification
-            //sucess+=1;
             Intent intentSec = new Intent();
             intentSec.setClass(appContext, SecondSucess.class);
             appContext.startActivity(intentSec);
-        //}
     }
 }

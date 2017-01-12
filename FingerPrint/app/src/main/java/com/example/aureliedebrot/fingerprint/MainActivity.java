@@ -75,8 +75,7 @@ public class MainActivity extends AppCompatActivity {
             cryptoObject = new FingerprintManager.CryptoObject(cipher);
             FingerPrintHandler helper = new FingerPrintHandler(this);
             //L'authentification commence ici
-            //Toast.makeText(this, "Authentication start", Toast.LENGTH_LONG).show();
-                helper.startAuth(fingerprintManager,cryptoObject);
+            helper.startAuth(fingerprintManager,cryptoObject);
 
         }
     }
