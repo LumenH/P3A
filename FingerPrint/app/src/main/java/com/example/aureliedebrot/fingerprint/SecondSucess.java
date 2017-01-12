@@ -76,7 +76,7 @@ public class SecondSucess extends AppCompatActivity {
         generateKey();
         if(cipherInit()){
             cryptoObject = new FingerprintManager.CryptoObject(cipher);
-            FingerPrintHandler helper = new FingerPrintHandler(this);
+            FingerPrintHandlerSec helper = new FingerPrintHandlerSec(this); //Pour ouvrire l'application
             //L'authentification commence ici
             //Toast.makeText(this, "Authentication start", Toast.LENGTH_LONG).show();
             helper.startAuth(fingerprintManager,cryptoObject);

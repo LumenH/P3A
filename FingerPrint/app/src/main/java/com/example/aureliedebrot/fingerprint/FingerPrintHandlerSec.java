@@ -6,25 +6,22 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.hardware.fingerprint.FingerprintManager;
 import android.os.CancellationSignal;
-import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 import android.widget.Toast;
 
-import static android.support.v4.app.ActivityCompat.startActivity;
+/**
+ * Created by aurelie.debrot on 12.01.2017.
+ */
 
-//From : http://www.techotopia.com/index.php/An_Android_Fingerprint_Authentication_Tutorial(03.11.16)
-
-public class FingerPrintHandler extends FingerprintManager.AuthenticationCallback{
+public class FingerPrintHandlerSec extends FingerprintManager.AuthenticationCallback {
 
     private CancellationSignal cancellationSignal;
     private Context appContext;
-    //private int sucess;
 
 
-    public FingerPrintHandler(Context context){
+    public FingerPrintHandlerSec(Context context){
         appContext = context;
-       // sucess = 0;
     }
 
     //démarre l'authentification
@@ -49,19 +46,10 @@ public class FingerPrintHandler extends FingerprintManager.AuthenticationCallbac
     public void onAuthenticationSucceeded(FingerprintManager.AuthenticationResult result ){
         Toast.makeText(appContext,"Authentication succeeded ",Toast.LENGTH_LONG).show();
         //Ouvrir une nouvelle page avec une application à faire dans la main activity plutôt qu'ici
-        /*if(sucess == 1){
-            Log.d("App","Open App");
-            //Est lancé après deux authentifications (en théorie)
-            Intent intent = new Intent();
-            intent.setClass(appContext,AuthSucceedActivity.class);
-            appContext.startActivity(intent);
-       }
-        else{*/
-            //Lance la deuxième authentification
-            //sucess+=1;
-            Intent intentSec = new Intent();
-            intentSec.setClass(appContext, SecondSucess.class);
-            appContext.startActivity(intentSec);
-        //}
+        Log.d("App","Open App");
+        //Est lancé après deux authentifications (en théorie)
+        Intent intent = new Intent();
+        intent.setClass(appContext,AuthSucceedActivity.class);
+        appContext.startActivity(intent);
     }
 }
