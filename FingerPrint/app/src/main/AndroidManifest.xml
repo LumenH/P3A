@@ -20,6 +20,9 @@
         <activity android:name=".AuthSucceedActivity">
 
         </activity>
+        <activity android:name=".SecondSucess">
+
+        </activity>
     </application>
 
 </manifest>

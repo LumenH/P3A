@@ -4,12 +4,13 @@ import android.Manifest;
 import android.app.KeyguardManager;
 import android.content.pm.PackageManager;
 import android.hardware.fingerprint.FingerprintManager;
+import android.os.Bundle;
 import android.security.keystore.KeyGenParameterSpec;
 import android.security.keystore.KeyPermanentlyInvalidatedException;
 import android.security.keystore.KeyProperties;
+import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -27,9 +28,11 @@ import javax.crypto.KeyGenerator;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKey;
 
-//From : http://www.techotopia.com/index.php/An_Android_Fingerprint_Authentication_Tutorial(03.11.16)
+/**
+ * Created by aurelie.debrot on 22.12.2016.
+ */
 
-public class MainActivity extends AppCompatActivity {
+public class SecondSucess extends AppCompatActivity {
 
     private static final String KEY_NAME = "exemple_key";
     private FingerprintManager fingerprintManager;
@@ -40,9 +43,9 @@ public class MainActivity extends AppCompatActivity {
     private FingerprintManager.CryptoObject cryptoObject;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.second_auth);
 
         //Obtenir les références aux services fingerPrintManager et keyGuardManager
         keyguardManager = (KeyguardManager) getSystemService(KEYGUARD_SERVICE);
@@ -76,11 +79,10 @@ public class MainActivity extends AppCompatActivity {
             FingerPrintHandler helper = new FingerPrintHandler(this);
             //L'authentification commence ici
             //Toast.makeText(this, "Authentication start", Toast.LENGTH_LONG).show();
-                helper.startAuth(fingerprintManager,cryptoObject);
+            helper.startAuth(fingerprintManager,cryptoObject);
 
         }
     }
-
     //Obtenir l'accés à l'endroit où est stocké l'empreinte
     protected void generateKey(){
         try{
@@ -100,8 +102,8 @@ public class MainActivity extends AppCompatActivity {
             keyStore.load(null);
             keyGenerator.init(new KeyGenParameterSpec.Builder(KEY_NAME,
                     KeyProperties.PURPOSE_ENCRYPT |
-            KeyProperties.PURPOSE_DECRYPT).setBlockModes(KeyProperties.BLOCK_MODE_CBC)
-            .setUserAuthenticationRequired(true).setEncryptionPaddings(
+                            KeyProperties.PURPOSE_DECRYPT).setBlockModes(KeyProperties.BLOCK_MODE_CBC)
+                    .setUserAuthenticationRequired(true).setEncryptionPaddings(
                             KeyProperties.ENCRYPTION_PADDING_PKCS7
                     ).build());
             keyGenerator.generateKey();
@@ -116,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean cipherInit(){
         try{
             cipher = Cipher.getInstance(KeyProperties.KEY_ALGORITHM_AES + "/"
-            + KeyProperties.BLOCK_MODE_CBC+"/"+KeyProperties.ENCRYPTION_PADDING_PKCS7);
+                    + KeyProperties.BLOCK_MODE_CBC+"/"+KeyProperties.ENCRYPTION_PADDING_PKCS7);
         }
         catch (NoSuchAlgorithmException | NoSuchPaddingException e){
             throw new RuntimeException("Failed to get Cipher",e);
