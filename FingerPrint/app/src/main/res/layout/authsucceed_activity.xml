@@ -22,13 +22,46 @@
                 android:gravity="right"
                 />
         </TableRow>
-        <TableRow>
+        <TableRow android:layout_marginTop="10dp">
             <TextView
                 android:text="Google"
                 android:textSize="17dp"
                 />
             <TextView
                 android:text="1234"
+                android:textSize="17dp"
+                android:gravity="right"
+                />
+        </TableRow>
+        <TableRow android:layout_marginTop="10dp">
+            <TextView
+                android:text="Facebook"
+                android:textSize="17dp"
+                />
+            <TextView
+                android:text="12345678"
+                android:textSize="17dp"
+                android:gravity="right"
+                />
+        </TableRow>
+        <TableRow android:layout_marginTop="10dp">
+            <TextView
+                android:text="Twitter"
+                android:textSize="17dp"
+                />
+            <TextView
+                android:text="password"
+                android:textSize="17dp"
+                android:gravity="right"
+                />
+        </TableRow>
+        <TableRow android:layout_marginTop="10dp">
+            <TextView
+                android:text="Github"
+                android:textSize="17dp"
+                />
+            <TextView
+                android:text="secret"
                 android:textSize="17dp"
                 android:gravity="right"
                 />

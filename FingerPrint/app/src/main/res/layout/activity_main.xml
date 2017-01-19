@@ -15,6 +15,12 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="center">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="First authentication"
+            android:layout_marginBottom="70dp"
+            android:textSize="30dp"/>
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
