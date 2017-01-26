@@ -30,6 +30,9 @@ import javax.crypto.SecretKey;
 
 /**
  * Created by aurelie.debrot on 22.12.2016.
+ *
+ * Classe inspirée de : http://www.techotopia.com/index.php/An_Android_Fingerprint_Authentication_Tutorial (03.11.16)
+ * Classe permettant de gérer la partie sécurité de la deuxième authentification
  */
 
 public class SecondSucess extends AppCompatActivity {
@@ -42,6 +45,16 @@ public class SecondSucess extends AppCompatActivity {
     private Cipher cipher;
     private FingerprintManager.CryptoObject cryptoObject;
 
+    /**
+     * Méthode permettant de lancer la vue de la deuxième authentification.
+     * Elle obtient aussi les références aux service fingerPrintManager et keyGuardManager.
+     * Les permissions suivants sont vérifiées :
+     * - Le verrouillage de l'écran est activé et une séurité est disponible
+     * - La permission d'utiliser le lecteur d'empreinte est bien précisée dans le manifest
+     * - Une empreinte a bien été enregistrée sur le téléphone
+     * Une fois cela fait, une clé est générée.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,7 +96,10 @@ public class SecondSucess extends AppCompatActivity {
 
         }
     }
-    //Obtenir l'accés à l'endroit où est stocké l'empreinte
+
+    /**
+     * Méthode permettant d'obtenir l'accès à l'endroit où est stocké l'empreinte. Une clé est générée.
+     */
     protected void generateKey(){
         try{
             keyStore = keyStore.getInstance("AndroidKeyStore");
@@ -115,6 +131,11 @@ public class SecondSucess extends AppCompatActivity {
     }
 
     //Initialisation du cipher avec la clé créée
+
+    /**
+     * Méthode permettant d'initialiser un cipher avec le clé précédemment créée.
+     * @return
+     */
     public boolean cipherInit(){
         try{
             cipher = Cipher.getInstance(KeyProperties.KEY_ALGORITHM_AES + "/"

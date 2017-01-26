@@ -27,8 +27,10 @@ import javax.crypto.KeyGenerator;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKey;
 
-//From : http://www.techotopia.com/index.php/An_Android_Fingerprint_Authentication_Tutorial(03.11.16)
-
+/**
+ * Classe inspirée de : http://www.techotopia.com/index.php/An_Android_Fingerprint_Authentication_Tutorial (03.11.16)
+ * Elle gère les étapes liées à la partie sécurité de l'authentification
+ */
 public class MainActivity extends AppCompatActivity {
 
     private static final String KEY_NAME = "exemple_key";
@@ -39,6 +41,16 @@ public class MainActivity extends AppCompatActivity {
     private Cipher cipher;
     private FingerprintManager.CryptoObject cryptoObject;
 
+    /**
+     * Méthode permettant de lancer la vue de la première authentification.
+     * Elle obtient aussi les références aux service fingerPrintManager et keyGuardManager.
+     * Les permissions suivants sont vérifiées :
+     * - Le verrouillage de l'écran est activé et une séurité est disponible
+     * - La permission d'utiliser le lecteur d'empreinte est bien précisée dans le manifest
+     * - Une empreinte a bien été enregistrée sur le téléphone
+     * Une fois cela fait, une clé est générée.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,7 +92,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    //Obtenir l'accés à l'endroit où est stocké l'empreinte
+
+    /**
+     * Méthode permettant d'obtenir l'accès à l'endroit où est stocké l'empreinte. Une clé est générée.
+     */
     protected void generateKey(){
         try{
             keyStore = keyStore.getInstance("AndroidKeyStore");
@@ -111,7 +126,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    //Initialisation du cipher avec la clé créée
+
+    /**
+     * Méthode permettant d'initialiser un cipher avec le clé précédemment créée.
+     * @return
+     */
     public boolean cipherInit(){
         try{
             cipher = Cipher.getInstance(KeyProperties.KEY_ALGORITHM_AES + "/"

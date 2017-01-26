@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 
 /**
  * Created by aurelie.debrot on 17.11.2016.
+ *
+ * Cette classe affiche la bonne vue lorsque l'authentification est un succés, via la méthode onCreate.
  */
 
 public class AuthSucceedActivity extends AppCompatActivity {
